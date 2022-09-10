@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class GetRandomPaletteTest extends TestCase
 {
-
     public function testGetRandomPalette()
     {
         $api = new Api(new Client());
@@ -37,4 +36,13 @@ class GetRandomPaletteTest extends TestCase
             $this->assertMatchesRegularExpression('/^[0-9A-Fa-f]{6}$/', $hex);
         }
     }
+
+    /*
+    public function testGetRandomPaletteBadStatusCode()
+    {
+        $client = $this->createMock(Client::class);
+        $api = new Api($client);
+        $result = $api->getRandomPalette();
+    }
+    */
 }

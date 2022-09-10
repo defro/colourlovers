@@ -2,10 +2,9 @@
 
 namespace Defro\ColourLovers\Exception;
 
-use http\Exception\RuntimeException;
 use Throwable;
 
-class BadStatusCodeException extends RuntimeException
+class BadStatusCodeException extends \RuntimeException
 {
     public function __construct(
         string $message,

@@ -3,6 +3,7 @@
 
 # PhpUnit
 /.phpunit.result.cache
+/.coverage
 
 # Composer
 /composer.lock
