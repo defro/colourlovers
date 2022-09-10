@@ -33,6 +33,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=8.0",
+        "ext-libxml": "*",
+        "ext-simplexml": "*",
         "guzzlehttp/guzzle": "^7.5"
     },
     "require-dev": {
