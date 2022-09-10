@@ -1,0 +1,41 @@
+{
+    "name": "defro/colourlovers",
+    "description": "Library to request Colour Lovers REST Api.",
+    "homepage": "https://github.com/defro/colourlovers",
+    "keywords":
+    [
+        "api",
+        "colourlovers",
+        "color",
+        "pattern",
+        "palette"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Defro\\ColourLovers\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Defro\\ColourLovers\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Joël Gaujard",
+            "email": "j.gaujard@gmail.com",
+            "role": "Developer",
+            "homepage": "https://defro.github.io"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": "^7.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}

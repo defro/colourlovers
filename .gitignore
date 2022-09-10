@@ -1,0 +1,9 @@
+# IDE
+/.idea
+
+# PhpUnit
+/.phpunit.result.cache
+
+# Composer
+/composer.lock
+/vendor/
