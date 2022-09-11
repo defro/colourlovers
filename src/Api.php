@@ -48,6 +48,19 @@ class Api
         return $this->response($uri);
     }
 
+    public function getPaletteById(int $id)
+    {
+        $data = [
+            'format' => $this->format,
+        ];
+        if (!empty($this->jsonCallback)) {
+            $data['jsonCallback'] = $this->jsonCallback;
+        }
+        $uri = $this->endpointUri . '/palette/' . $id . '?' . http_build_query($data);
+
+        return $this->response($uri);
+    }
+
     private function response(string $uri)
     {
         $response = $this->client->get($uri);
