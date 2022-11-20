@@ -8,7 +8,7 @@ class BadStatusCodeException extends \RuntimeException
 {
     public function __construct(
         string $message,
-        int $statusCode,
+        ?int $statusCode,
         Throwable $previous = null
     ) {
         parent::__construct($message, $statusCode, $previous);

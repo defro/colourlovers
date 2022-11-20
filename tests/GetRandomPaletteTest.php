@@ -3,6 +3,7 @@
 namespace Defro\ColourLovers\Tests;
 
 use Defro\ColourLovers\Api;
+use Defro\ColourLovers\Exception\BadStatusCodeException;
 use GuzzleHttp\Client;
 
 class GetRandomPaletteTest extends BaseTest
@@ -25,12 +26,11 @@ class GetRandomPaletteTest extends BaseTest
         $this->paletteAsserts($result['palette']);
     }
 
-    /*
     public function testGetRandomPaletteBadStatusCode()
     {
         $client = $this->createMock(Client::class);
         $api = new Api($client);
-        $result = $api->getRandomPalette();
+        $this->expectException(BadStatusCodeException::class);
+        $api->getRandomPalette();
     }
-    */
 }
