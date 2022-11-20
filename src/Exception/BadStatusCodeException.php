@@ -13,5 +13,4 @@ class BadStatusCodeException extends \RuntimeException
     ) {
         parent::__construct($message, $statusCode, $previous);
     }
-
 }

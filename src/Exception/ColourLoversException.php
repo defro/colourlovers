@@ -13,5 +13,4 @@ class ColourLoversException extends \RuntimeException
     ) {
         parent::__construct($message, $code, $previous);
     }
-
 }

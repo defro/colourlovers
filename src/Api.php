@@ -18,11 +18,19 @@ class Api
     /** @var string  */
     private string $jsonCallback;
 
+    /**
+     * @param Client $client
+     */
     public function __construct(private Client $client)
     {
     }
 
-    public function getRandomPalette()
+    /**
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws BadStatusCodeException
+     */
+    public function getRandomPalette(): array
     {
         $data = [
             'format' => $this->format,
@@ -35,7 +43,13 @@ class Api
         return $this->response($uri);
     }
 
-    public function getColor(string $hex)
+    /**
+     * @param string $hex
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws BadStatusCodeException
+     */
+    public function getColor(string $hex): array
     {
         $data = [
             'format' => $this->format,
@@ -48,7 +62,13 @@ class Api
         return $this->response($uri);
     }
 
-    public function getPaletteById(int $id)
+    /**
+     * @param int $id
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws BadStatusCodeException
+     */
+    public function getPaletteById(int $id): array
     {
         $data = [
             'format' => $this->format,
@@ -61,7 +81,13 @@ class Api
         return $this->response($uri);
     }
 
-    private function response(string $uri)
+    /**
+     * @param string $uri
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws BadStatusCodeException
+     */
+    private function response(string $uri): array
     {
         $response = $this->client->get($uri);
 
