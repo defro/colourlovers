@@ -20,23 +20,6 @@ docker run -it --rm --name colourlovers -v "$(pwd)":/application colourlovers co
 ```
 You must launch again this command each time you make changes in composer.json file.
 
-# Run example page
-
-The [example script](../example/index.php) will use Google Api Key found in file `.env` located in `example` directory.
-
-Copy example file [`.env.dist`](../example/.env.dist) as `.env` in the same directory, edit it (don't forget to use your own Google Api Key) and save it.
-
-## Display example in your browser
-```bash
-docker run -it --rm --name colourlovers -v "$(pwd)":/application -p 8080:80 colourlovers
-```
-Open your browser and go to http://localhost:8080/
-
-## Display example in your console
-```bash
-docker run -it --rm --name colourlovers -v "$(pwd)":/application colourlovers php example/index.php
-```
-
 # Run unit test
 ```bash
 docker run -it --rm --name colourlovers -v "$(pwd)":/application colourlovers composer run-script test
