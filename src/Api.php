@@ -9,13 +9,13 @@ use GuzzleHttp\Client;
 
 class Api
 {
-    /** @var string  */
+    /** @var string */
     private string $endpointUri = 'http://www.colourlovers.com/api';
 
-    /** @var Format  */
+    /** @var Format */
     private Format $format = Format::xml;
 
-    /** @var string  */
+    /** @var string */
     private string $jsonCallback;
 
     /**
@@ -26,9 +26,10 @@ class Api
     }
 
     /**
-     * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws BadStatusCodeException
+     *
+     * @return array
      */
     public function getRandomPalette(): array
     {
@@ -38,16 +39,18 @@ class Api
         if (!empty($this->jsonCallback)) {
             $data['jsonCallback'] = $this->jsonCallback;
         }
-        $uri = $this->endpointUri . '/palettes/random?' . http_build_query($data);
+        $uri = $this->endpointUri.'/palettes/random?'.http_build_query($data);
 
         return $this->response($uri);
     }
 
     /**
      * @param string $hex
-     * @return array
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws BadStatusCodeException
+     *
+     * @return array
      */
     public function getColor(string $hex): array
     {
@@ -57,16 +60,18 @@ class Api
         if (!empty($this->jsonCallback)) {
             $data['jsonCallback'] = $this->jsonCallback;
         }
-        $uri = $this->endpointUri . '/color/' . $hex . '?' . http_build_query($data);
+        $uri = $this->endpointUri.'/color/'.$hex.'?'.http_build_query($data);
 
         return $this->response($uri);
     }
 
     /**
      * @param int $id
-     * @return array
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws BadStatusCodeException
+     *
+     * @return array
      */
     public function getPaletteById(int $id): array
     {
@@ -76,16 +81,18 @@ class Api
         if (!empty($this->jsonCallback)) {
             $data['jsonCallback'] = $this->jsonCallback;
         }
-        $uri = $this->endpointUri . '/palette/' . $id . '?' . http_build_query($data);
+        $uri = $this->endpointUri.'/palette/'.$id.'?'.http_build_query($data);
 
         return $this->response($uri);
     }
 
     /**
      * @param string $uri
-     * @return array
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws BadStatusCodeException
+     *
+     * @return array
      */
     private function response(string $uri): array
     {
@@ -93,7 +100,8 @@ class Api
 
         if ($response->getStatusCode() !== 200) {
             throw new BadStatusCodeException(
-                sprintf('Could not connect to %s', $uri), $response->getStatusCode()
+                sprintf('Could not connect to %s', $uri),
+                $response->getStatusCode()
             );
         }
 
@@ -102,11 +110,9 @@ class Api
         if ($this->format === Format::xml) {
             $xml = simplexml_load_string($contents, \SimpleXMLElement::class, LIBXML_NOCDATA);
             $json = json_encode($xml);
-        }
-        elseif ($this->format === Format::json) {
+        } elseif ($this->format === Format::json) {
             $json = $contents;
-        }
-        else {
+        } else {
             throw new ColourLoversException(sprintf('Unknown format "%s".', $this->format->name));
         }
 
